@@ -1,0 +1,17 @@
+name: specialday
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./src/utils/seed:/docker-entrypoint-initdb.d
+
+volumes:
+  mongo_data:
